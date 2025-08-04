@@ -1,0 +1,27 @@
+.bg-pinky {
+    background-color: rgb(200, 0, 50);
+}
+
+.pinky {
+    color: rgb(200, 0, 50);
+}
+
+
+li {
+    list-style: none;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn-like-color {
+    color: var(--bs-success);
+    background-color: var(--bs-warning);
+    border-color: var(--bs-warning-border-subtle);
+}
+
+.btn-like-color:hover {
+    border-color: var(--bs-warning-border-subtle);
+}

@@ -1,0 +1,38 @@
+{% extends 'web/base.html' %}
+{% block content %}
+{% if form.errors %}
+<div class="md d-block text-center">
+    <p class="">Введены некорректные данные, пожалуйста, проверьте логин/пароль и повторите вход.</p>
+</div>
+{% endif %}
+<div class="p-4 p-md-5 mb-4 text-white rounded d-flex justify-content-around">
+<div class="container input-group mb-3 justify-content-center">
+
+    {% if user.is_authenticated %}
+    <p>Вы не имеете доступа к этой странице.</p>
+    {% else %}
+    <form action="" method="post" class="">
+        {% csrf_token %}
+        <div class="row">
+                <input type="text" class="form-control col-6 mb-3" placeholder="Введите e-mail" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="username">
+                <input type="text" class="form-control col-6 mb-3" placeholder="{{ form.password.label }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="password">
+        </div>
+        <div class="row">
+                <input type="submit" class="btn btn-dark btn-outline-light justify-content-flex-end mb-3 bg-pinky col-12" value="Войти">
+        </div>
+    
+
+        <div class="row">
+            <input type="hidden" name="next" value="{{ next }}">
+        </div>
+
+            <a class="pinky col ms-0" href="{% url 'password_reset' %}">Забыли пароль?</a>
+
+    </form>
+    {% endif %}
+
+</div>  
+</div>
+    
+
+{% endblock content %}

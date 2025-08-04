@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load widget_tweaks %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+              <h1 class="nav-link px-2 pinky fs-1">Cheers</h1>
+
+            </a>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center align-items-center mb-md-0">
+              {% if user.is_authenticated %}
+              <li class="text-center">
+                {% comment %} 
+                <a class="" href="{% url 'profile' %}">
+                  <img src="{{ user.profile.photo.url }}" style="max-height: 100px;" alt="{{ user.profile.name }}">
+                  <br>
+                {% endcomment %}
+                <span class="text-dark">{{ user.profile.name }}</span>
+                </a>
+              </li>
+              <li><a href="{% url 'logout' %}" class="nav-link px-2 link-dark">Выйти</a></li>
+
+              {% else %}
+                <li><a href="{% url 'login' %}" class="nav-link px-2 link-dark">Войти</a></li>
+                <li><a href="{% url 'registration' %}" class="nav-link px-2 link-dark">Зарегистрироваться</a></li>
+              {% endif %}
+            </ul>
+      
+
+          </header>
+          {% block content %}
+          {% endblock content %}
+          
+          {% block interactive %}
+          {% endblock interactive %}
+    </div>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
